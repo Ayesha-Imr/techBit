@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div class="interests-container">
+      <h3>What are you interested in?</h3>
+      <div id="interests-container" class="interests-container">
+        <div class="interest-item" onclick="toggleInterest(this)">🤖Artificial Intelligence</div>
+        <div class="interest-item" onclick="toggleInterest(this)">🦿Machine Learning</div>
+        <div class="interest-item" onclick="toggleInterest(this)">💻Web Development</div>
+        <div class="interest-item" onclick="toggleInterest(this)">🖼️UI/UX Design</div>
+        <div class="interest-item" onclick="toggleInterest(this)">📊Data Science</div>
+        <div class="interest-item" onclick="toggleInterest(this)">🛡️Cybersecurity</div>
+        <div class="interest-item" onclick="toggleInterest(this)">🦾Internet Of Thngs (IoT)</div>
+        <div class="interest-item" onclick="toggleInterest(this)">🎮Game Development</div>
+        <div class="interest-item" onclick="toggleInterest(this)">☁️ Cloud Computing</div>
+        <div class="interest-item" onclick="toggleInterest(this)">📱Mobile App Development</div>
+        <div class="interest-item" onclick="toggleInterest(this)">🗂️Database Management</div>
+        <div class="interest-item" onclick="toggleInterest(this)">🌐Web3.0</div>
+        <div class="interest-item" onclick="toggleInterest(this)">₿Blockchain Technology</div>
+        <div class="interest-item" onclick="toggleInterest(this)">⚙️Software Testing</div>
+        <div class="interest-item" onclick="toggleInterest(this)">🤖Robotics</div>
+        <div class="interest-item" onclick="toggleInterest(this)">📈Big Data Analytics</div>
+        <div class="interest-item" onclick="toggleInterest(this)">🌐Networking and Infrastructure</div>
+      </div>
+      <button class="interest" onclick="submitInterests()">Submit</button>
+    </div>
+  </body>
+
+</html>
+<script>
+  function toggleInterest(interest) {
+    interest.classList.toggle('selected');
+  }
+
+  function submitInterests() {
+    const selectedInterests = Array.from(document.getElementsByClassName('interest-item selected')).map(item => item.textContent);
+
+    // Do something with the selected interests
+    console.log(selectedInterests);
+  }</script>

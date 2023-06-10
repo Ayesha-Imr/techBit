@@ -1,0 +1,83 @@
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin: auto;
+}
+.logo {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 180px;
+}
+.form{
+  padding: 0 255px;
+  width: 50%;
+}
+a {
+  text-decoration: underline;
+  color: #114d70;
+}
+.form-check {
+  text-align: center;
+  margin-top: 20px;
+}
+.btn {
+  width: 450px;
+  text-align: center;
+  border-radius: 2px;
+}
+.btn-primary {
+  background-color: #114d70;
+  border-color: #114d70;
+}
+.btn-primary:hover {
+  background-color: rgb(95, 118, 160);
+  border-color: rgb(95, 118, 160);
+}
+label.gender{
+  margin-top: 10px;
+  margin-right: 15px;
+}
+input.radio{
+margin-left: 10px;
+}
+/* interest.html*/
+h3{
+  text-align: center;
+}
+.interests-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.interest-item {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border: solid 1px grey;
+  color: #333;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.interest-item.selected {
+  background-color: #395479;
+  color: #fff;
+}
+button.interest{
+  margin: auto;
+  padding: 7px;
+  width: 200px;
+  background-color: #114d70;
+  border-color: #114d70;
+  color: #fff;
+  text-align: center;
+  border-radius: 2px;
+  margin-left: 300px;
+}
