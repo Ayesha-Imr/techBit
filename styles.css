@@ -46,7 +46,7 @@ input.radio{
 margin-left: 10px;
 }
 /* interest.html*/
-h3{
+h2{
   text-align: center;
 }
 .interests-container {
@@ -78,6 +78,6 @@ button.interest{
   border-color: #114d70;
   color: #fff;
   text-align: center;
-  border-radius: 2px;
+  border-radius: 5px;
   margin-left: 300px;
 }

@@ -1,0 +1,81 @@
+body{
+  margin: 0px;
+  background-color: #03314B;
+  color: #ffffff;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.icon{
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+header{
+  margin: 0px 70px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+img.logo{
+  width: 60px;
+  height: 60px;
+  margin-right: 5px;
+}
+nav{
+  width: 400px;
+}
+ul{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+li{
+  margin-right:  5px;
+}
+section{
+  margin: 20px 70px;
+}
+
+div.following{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+.interest-item{
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border: solid 1px white;
+  color: white;
+  border-radius: 20px;
+}
+img.tools{
+  width: 180px;
+  height: 220px;
+}
+p.carousel-item{
+  width: 180px;
+  color: gainsboro;
+}
+footer{
+  padding: 30px 70px;
+  background-color: rgb(2, 41, 65);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+img.icons{
+  width: 35px;
+  height: 35px;
+}
+li:hover{
+color: #dfc637;
+}
