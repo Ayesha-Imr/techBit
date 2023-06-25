@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>techBit</title>
+    <!--link to the css file-->
+    <link rel="stylesheet" href="stylehomepage.css">
+    <!--link to slick carousel stylsesheet-->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <img class="logo" src="logoWHite.png" alt="">
+        <h1>techBit</h1>
+      </div>
+      <nav>
+        <ul>
+          <li><img class="icon" src="homeIcon.png" alt=""><a class="nav-link" href="#"></a>Home</li>
+          <li><img class="icon" src="searchIcon.png" alt=""><a class="nav-link" href="#"></a>Explore</li>
+          <li><img class="icon" src="saveIcon.png" alt=""><a class="nav-link" href="#"></a>Saved</li>
+          <li><img class="icon" src="accountIcon.png" alt=""><a class="nav-link" href="#"></a>Account</li>
+        </ul>
+      </nav>
+    </header>
+    <section class="graph">
+      <h1>For You</h1>
+    </section>
+    <section class="following">
+      <h1>Following</h1>
+      <div class="following">
+        <div class="interest-item">🤖Artificial Intelligence</div>
+        <div class="interest-item">🦿Machine Learning</div>
+        <div class="interest-item">💻Web Development</div>
+        <div class="interest-item">🖼️UI/UX Design</div>
+        <div class="interest-item">📊Data Science</div>
+        <div class="interest-item">🛡️Cybersecurity</div>
+        <div class="interest-item">🦾Internet Of Things (IoT)</div>
+        <div class="interest-item">🎮Game Development</div>
+        <div class="interest-item">☁️ Cloud Computing</div>
+        <div class="interest-item">🌐Web3.0</div>
+
+      </div>
+
+    </section>
+    <section class="tools">
+      <h1>Tools</h1>
+      <div class="carousel">
+        <div class="carousel-item"><img class="tools" src="techguidebook.png">
+          <h3>Tech Guide Book</h3>
+          <p>Website</p>
+          <p>A comprehensive collection of cheat sheets and quick references for various programming languages,
+            frameworks, and libraries</p>
+        </div>
+        <div class="carousel-item"><img class="tools" src="leetcode.png">
+          <h3>Leetcode</h3>
+          <p>Website</p>
+          <p>A platform with a collection of coding challenges and interview questions to practice your skills
+          </p>
+        </div>
+        <div class="carousel-item"><img class="tools" src="RapidAPI.png">
+          <h3>Rapid API</h3>
+          <p>Website</p>
+          <p>An API marketplace that provides a wide range of APIs for developers to integrate into their applications
+          </p>
+        </div>
+        <div class="carousel-item"><img class="tools" src="gitHub.png">
+          <h3>GitHub</h3>
+          <p>Platform</p>
+          <p>A popular web-based platform for version control, collaboration, and hosting of code repositories</p>
+        </div>
+        <div class="carousel-item"><img class="tools" src="hackerrank.png">
+          <h3>Hackerrank</h3>
+          <p>Website</p>
+          <p>The market's leading online technical assessment and remote interview solution </p>
+        </div>
+        <div class="carousel-item"><img class="tools" src="roadmapImage.png">
+          <h3>Roadmaps</h3>
+          <p>Website</p>
+          <p>Learning paths that outline the essential skills for developers to specialize in different domains</p>
+        </div>
+        <div class="carousel-item"><img class="tools" src="Dev.png">
+          <h3>DEV Community</h3>
+          <p>Website</p>
+          <p> An online community for developers, offering a platform to share knowledge & connect with peers,</p>
+        </div>
+        <div class="carousel-item"><img class="tools" src="overapi.png">
+          <h3>Over Api</h3>
+          <p>Website</p>
+          <p>A collection of cheatsheets and references for various programming languages,frameworks, and libraries</p>
+        </div>
+        <div class="carousel-item"><img class="tools" src="stackOveflow.png">
+          <h3>Stack Overflow</h3>
+          <p>Website</p>
+          <p>A QnA community for programmers, where you can seek assistance from the developer community.</p>
+        </div>
+        <div class="carousel-item"><img class="tools" src="w3schools.png">
+          <h3>W3 Schools</h3>
+          <p>Website</p>
+          <p>A popular learning resource that offers tutorials, examples, and references for developers </p>
+        </div>
+        <div class="carousel-item"><img class="tools" src="VSCode.png">
+          <h3>VS Code</h3>
+          <p>Code Editor</p>
+          <p>A widely adopted source code editor developed by Microsoft, offering a rich set of features.</p>
+        </div>
+      </div>
+    </section>
+    <section class="courses">
+      <h1>Courses</h1>
+    </section>
+    <section class="articles">
+      <h1>Articles</h1>
+    </section>
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('.carousel').slick({
+          slidesToShow: 6,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 2000,
+          prevArrow: false,
+          nextArrow: false
+
+        });
+      })
+    </script>
+  </body>
+  <footer>
+    <div class="logo">
+      <img class="logo" src="logoWHite.png" alt="">
+      <h1>techBit</h1>
+    </div>
+    <ul>
+      <li> © techBit 2023 |</li>
+      <li>Sitemap |</li>
+      <li>Legal Notice |</li>
+      <li>Terms of Service |</li>
+      <li>Privacy Policies</li>
+    </ul>
+    <ul>
+      <li><img class="icons" src="icons8-facebook-24.png" alt=""></li>
+      <li><img class="icons" src="icons8-twitter-circled-30.png" alt=""></li>
+      <li><img class="icons" src="icons8-linkedin-64.png" alt=""></li>
+      <li></li>
+    </ul>
+  </footer>
+
+
+</html>
