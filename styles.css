@@ -45,6 +45,12 @@ label.gender{
 input.radio{
 margin-left: 10px;
 }
+img.right{
+  height: 882px;
+  margin:20px;
+  margin-left:340px;
+  border-radius: 2%;
+ }
 /* interest.html*/
 h2{
   text-align: center;
