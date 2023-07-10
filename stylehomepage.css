@@ -100,6 +100,10 @@ div.heading{
   flex-direction: row;
   justify-content: space-between;
 }
+img.icon-bk{
+  width: 25px;
+  height: 25px;
+}
 button.view{
   width: 91px;
   height: 34px;
@@ -133,7 +137,7 @@ color: #dfc637;
 }
 /*EXPLORE PAGE*/
 .main{
-padding-top: 120px ;
+padding-top: 100px ;
 padding-bottom: 56px;
 display: flex;
 flex-direction: column;
@@ -141,7 +145,6 @@ align-items: center;
 }
 .main h1{
   text-align: center;
-
 }
 form input{
   margin: 20px 0px;
@@ -152,7 +155,7 @@ form input{
   background-color: #03314B;
 }
 div.category h1{
-  padding-left: 560px;
+  padding-left: 390px;
 }
 div.category{
   margin-bottom: 100px;
@@ -169,9 +172,11 @@ div.resource, div.courses, div.articles, div.codingComp{
   margin: 12px;
   padding: 15px;
   border-radius: 5px;
+  transform: scale(1.1, 1.1);
+  transition: 0.3s linear;
 }
 div.resource:hover, div.courses:hover, div.articles:hover, div.codingComp:hover{
-  border: 3px solid  rgb(2, 41, 65); ;
+  border: 3px solid #A3CEF1; 
 }
 /*SAVED PAGE*/
 section.saved{
@@ -180,12 +185,80 @@ section.saved{
 section.saved h1, section.saved p{
   text-align: center;
 }
+/*ACCOUNT PAGE*/
+section.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 700px;
+  margin: auto;
+}
+.profile-picture {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  object-fit: cover;
+  border: #A3CEF1 1px solid;
+}
+div.edit-header{
+  margin-top: 3px;
+  width: 690px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 62px;
+}
+p.head-account{
+  margin-top: 10px;
+  color:  rgb(206, 203, 203);
+  font-size: 20px;
+}
+p.info{
+  text-decoration: underline;
+  margin-left: 5px;
+}
+hr.account{
+  width: 700px;
+  height: 1px;
+  border: none;
+}
+.username,
+.name,
+.email,
+.social-media{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.icons-g{
+  width: 38px;
+  height: 38px;
+}
+img.edit-icon{
+  width: 20px;
+  height: 20px;
+}
+.edit-button{
+  margin: 5px 0px;
+  border: none;
+  background-color: #03314B;
+  color: #A3CEF1;
+  border-radius: 15px;
+  width: 150px;
+  height: 40px;
+}
+div.following{
+  margin-bottom: 20px;
+}
 /*COURSES PAGE*/
 section.container a{
   color: #ffffff;
   text-decoration: none;
 }
 div.parent-courses{
+  width: 1400px;
   display: grid;
   grid-template-columns: 260px 260px 260px 260px 260px;
   gap: 20px;
@@ -219,6 +292,7 @@ div.text-c  h3{
 }
 /*ARTICLES PAGE*/
 div.parent-articles{
+  width: 1400px;
   display: grid;
   grid-template-columns: 453px 453px 453px;
   gap: 20px;
@@ -251,4 +325,7 @@ div.text-a{
 div.text-a  h3{
   margin-top: 0px;
   padding-left: 0px;
+}
+@media (max-width: 768px) {
+  
 }

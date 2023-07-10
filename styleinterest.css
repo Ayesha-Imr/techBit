@@ -1,0 +1,49 @@
+/* interest.html*/
+body {
+  margin: 0px;
+  background-color: rgb(2, 41, 65);
+  color: #ffffff;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+h2{
+  margin-top: 150px;
+  text-align: center;
+}
+.interests-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.interest-item {
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border: solid 1px grey;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.interest-item.selected {
+  background-color: #A3CEF1;
+  color: black;
+}
+button.interest{
+  margin: auto;
+  padding: 8px 7px;
+  width: 120px;
+  background-color: #114d70;
+  border: #114d70 1px solid;
+  color: #fff;
+  text-align: center;
+  border-radius: 15px;
+  margin-left: 300px;
+}
+button.interest:hover{
+  color: white;
+  background-color: #dfc637;
+  border: 1px solid #dfc637;
+  border-radius: 15px;
+  transform: scale(1.1, 1.1);
+}
