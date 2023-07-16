@@ -1,97 +1,318 @@
+<!-- 
+This is the HTML file for the account settings page of the "TechBit" website.
+This page allows users to view and edit their profile information, including their profile picture, username, name, email, and their interests.
+They can also add social media links to their profile.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
+<head>
+  <!-- Page metadata -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>techBit - Personal Page</title>
-    <link rel="stylesheet" href="stylehomepage.css">
-  </head>
+  <!-- Page title -->
+  <title>techBit - Personal Page</title>
 
-  <body>
-    <header>
-      <div class="logo">
-        <img src="logoWHite.png" alt="">
-        <h1>techBit</h1>
-      </div>
-      <nav>
-        <ul>
-          <li><img class="icon" src="homeIcon.png" alt=""><a class="nav-link" href="index.html" target="_self">Home</a>
-          </li>
-          <li><img class="icon" src="searchIcon.png" alt=""><a class="nav-link" href="explore.html"
-              target="_self">Discover</a></li>
-          <li><img class="icon" src="saveIcon.png" alt=""><a class="nav-link" href="save.html" target="_self">Saved</a>
-          </li>
-          <li><img class="icon" src="accountIcon.png" alt=""><a class="nav-link" href="account.html"
-              target="_self">Account</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <section class="profile">
-      <div class="edit-header">
-        <p class="head-account">Profile Picture</p>
-        <button class="edit-button"><img class="edit-icon" src="icons8-pencil-50.png" alt="Edit"><span>Edit
-            Details</span></button>
-      </div>
-      <img class=" profile-picture" src="profile-picture.jpg" alt="Profile Picture">
-      <hr class="account">
-      <div class="edit-header">
-        <p class="head-account">Profile Details</p>
-        <button class="edit-button"><img class="edit-icon" src="icons8-pencil-50.png" alt="Edit"><span>Edit
-            Details</span></button>
-      </div>
-      <div class="username">
-        <p>Username: </p>
-        <p class="info">johnthedon</p>
-      </div>
-      <div class="name">
-        <p>Name: </p>
-        <p class="info">John Doe</p>
-      </div>
-      <div class="social-media">
-        <a href="github-profile-link"><img class="icons-g" src="icons8-github-64.png" alt="GitHub"></a>
-        <a href="linkedin-profile-link"><img class="icons" src="icons8-linkedin-64.png" alt="GitHub"></a>
-        <a href="twitter-profile-link"><img class="icons" src="icons8-twitter-circled-30.png" alt="Twitter"></a>
-        <a href="facebook-profile-link"><img class="icons" src="icons8-facebook-24.png" alt="Facebook"></a>
-        <a href="instagram-profile-link"><img class="icons" src="icons8-instagram-circle-30.png" alt="Instagram"></a>
-      </div>
-      <div class="email">
-        <p>Email: </p>
-        <p class="info">user@example.com </p>
-      </div>
-      </div>
-      <hr class="account">
-      <div class="edit-header">
-        <p class="head-account">Your Interests</p>
-        <button class="edit-button"><img class="edit-icon" src="icons8-pencil-50.png" alt="Edit"><span>Edit
-            Details</span></button>
-      </div>
-      <div class="following">
-        <div class="interest-item">🤖Artificial Intelligence</div>
-        <div class="interest-item">🦿Machine Learning</div>
-        <div class="interest-item">💻Web Development</div>
-      </div>
-    </section>
-    <footer>
-      <div class="logo">
-        <img src="logoWHite.png" alt="">
-        <h1>techBit</h1>
-      </div>
+  <!-- Link to the CSS file -->
+  <link rel="stylesheet" href="stylehomepage.css">
+</head>
+<body>
+  <!-- This is the header of the website containing the logo and navigation links. -->
+  <header>
+    <div class="logo">
+      <img src="logoWHite.png" alt="">
+      <h1>techBit</h1>
+    </div>
+    <nav>
       <ul>
-        <li> © techBit 2023 |</li>
-        <li>Sitemap |</li>
-        <li>Legal Notice |</li>
-        <li>Terms of Service |</li>
-        <li>Privacy Policies</li>
+        <li><img class="icon" src="homeIcon.png" alt=""><a class="nav-link" href="index.html" target="_self">Home</a></li>
+        <li><img class="icon" src="searchIcon.png" alt=""><a class="nav-link" href="explore.html" target="_self">Discover</a></li>
+        <li><img class="icon" src="saveIcon.png" alt=""><a class="nav-link" href="save.html" target="_self">Saved</a></li>
+        <li><img class="icon" src="accountIcon.png" alt=""><a class="nav-link" href="account.html" target="_self">Account</a></li>
       </ul>
-      <ul>
-        <li><img class="icons" src="icons8-facebook-24.png" alt=""></li>
-        <li><img class="icons" src="icons8-twitter-circled-30.png" alt=""></li>
-        <li><img class="icons" src="icons8-linkedin-64.png" alt=""></li>
-        <li></li>
-      </ul>
-    </footer>
-  </body>
+    </nav>
+  </header>
 
+  <!-- This is the section of the page where user's profile details are displayed. -->
+  <section class="profile">
+    <!-- This is where the user's profile picture is displayed. -->
+    <div class="edit-header">
+      <p class="head-account">Profile Picture</p>
+      <button class="edit-button editpfp" onclick="editProfilePicture()"><img class="edit-icon" src="icons8-pencil-50.png" alt="Edit"><span>Edit Profile Picture</span></button>
+    </div>
+    <img id="profile-picture" class="profile-picture" src="" alt="Profile Picture">
+    <input type="file" id="profile-picture-input" style="display: none;">
+
+    <hr class="account">
+
+    <!-- This is where the user's name and username are displayed. -->
+    <div class="edit-header">
+      <p class="head-account">Profile Details</p>
+    </div>
+    <div class="username">
+      <p>Username: </p>
+      <p class="info" id="username"></p>
+    </div>
+    <div class="name">
+      <p>Name: </p>
+      <p class="info" id="name"></p>
+    </div>
+
+    <!-- This is the dialog box where users can add their social media links. -->
+    <div id="add-socials-dialog" class="dialog-box" style="display: none;">
+      <div class="dialog-content">
+        <span class="close-button" onclick="closeDialog()">&times;</span>
+        <h2>Add Socials</h2>
+        <form id="add-socials-form">
+          <label for="github">Github</label>
+          <input type="url" id="github" name="github" placeholder="Enter your Github profile URL">
+          <label for="linkedin">LinkedIn</label>
+          <input type="url" id="linkedin" name="linkedin" placeholder="Enter your LinkedIn profile URL">
+          <label for="twitter">Twitter</label>
+          <input type="url" id="twitter" name="twitter" placeholder="Enter your Twitter profile URL">
+          <label for="facebook">Facebook</label>
+          <input type="url" id="facebook" name="facebook" placeholder="Enter your Facebook profile URL">
+          <label for="instagram">Instagram</label>
+          <input type="url" id="instagram" name="instagram" placeholder="Enter your Instagram profile URL">
+          <button type="submit" onclick="saveSocials(event)">Save</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- This is where the user's social media links are displayed. -->
+    <div class="social-media">
+      <a id="github-link" href="#"><img class="icons-g" src="icons8-github-64.png" alt="GitHub"></a>
+      <a id="linkedin-link" href="#"><img class="icons" src="icons8-linkedin-64.png" alt="GitHub"></a>
+      <a id="twitter-link" href="#"><img class="icons" src="icons8-twitter-circled-30.png" alt="Twitter"></a>
+      <a id="facebook-link" href="#"><img class="icons" src="icons8-facebook-24.png" alt="Facebook"></a>
+      <a id="instagram-link" href="#"><img class="icons" src="icons8-instagram-circle-30.png" alt="Instagram"></a>
+    </div>
+
+    <!-- This is the button to open the dialog box to add social media links. -->
+    <button class="edit-button editpfp" onclick="openDialog()"><img class="edit-icon" src="icons8-pencil-50.png" alt="Edit" ><span>Add Socials</span></button>
+
+    <!-- This is where the user's email is displayed. -->
+    <div class="email">
+      <p>Email: </p>
+      <p class="info" id="email"></p>
+    </div>
+
+    <hr class="account">
+
+    <!-- This is where the user's interests are displayed. -->
+    <div class="edit-header">
+      <p class="head-account">Your Interests</p>
+    </div>
+    <div class="following" id="interests">
+      <!-- Interests will be dynamically added here -->
+    </div>
+  </section>
+
+  <!-- This is the log out button. -->
+  <p id="logout"><a href="login.html">Log out</a></p>
+
+  <!-- This is the footer of the website containing the logo and legal links. -->
+  <footer>
+    <div class="logo">
+      <img src="logoWHite.png" alt="">
+      <h1>techBit</h1>
+    </div>
+    <ul>
+      <li> © techBit 2023 |</li>
+      <li>Sitemap |</li>
+      <li>Legal Notice |</li>
+      <li>Terms of Service |</li>
+      <li>Privacy Policies</li>
+    </ul>
+    <ul>
+      <li><img class="icons" src="icons8-facebook-24.png" alt=""></li>
+      <li><img class="icons" src="icons8-twitter-circled-30.png" alt=""></li>
+      <li><img class="icons" src="icons8-linkedin-64.png" alt=""></li>
+    </ul>
+  </footer>
+
+  <!-- These are the scripts that fetch the user data and handle user interaction. -->
+  <script>
+    // This script fetches the user data from the server and displays it on the page.
+    const emojiMap = {
+      'Artificial Intelligence': '🤖',
+      'Machine Learning': '🦿',
+      'Web Development': '💻',
+      'UI/UX Design': '🖼️',
+      'Data Science': '📊',
+      'Cybersecurity': '🛡️',
+      'Internet Of Things (IoT)': '🦾',
+      'Game Development': '🎮',
+      'Cloud Computing': '☁️',
+      'Mobile App Development': '📱',
+      'Database Management': '🗂️',
+      'Web3.0': '🌐',
+      'Blockchain Technology': '₿',
+      'Software Testing and Quality Assurance': '⚙️',
+      'Data Mining': '🗃️',
+      'Big Data Analytics': '📈',
+      'Networking and Infrastructure': '🌐',
+      'Computer Vision and Graphics': '📹',
+      'Virtual Reality (VR) and Augmented Reality (AR)': '🥽',
+      'Human Computer Interaction (HCI)': '👨🏽‍💻',
+      'Robotics': '🤖',
+      'Embedded Systems': '🗄️',
+      'Information Systems Management': '🖥️',
+      'DevOps': '⌨️'
+    };
+
+    const user_id = localStorage.getItem('user_id');
+    fetch(`http://localhost:3000/user/${user_id}`)
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('name').textContent = data.name;
+        document.getElementById('username').textContent = data.username;
+        document.getElementById('email').textContent = data.email;
+
+        const interestsContainer = document.getElementById('interests');
+        for (const interest of data.interests) {
+          const interestItem = document.createElement('div');
+          interestItem.classList.add('interest-item');
+
+          const emoji = emojiMap[interest];
+          if (emoji) {
+            const emojiSpan = document.createElement('span');
+            emojiSpan.textContent = emoji;
+            interestItem.appendChild(emojiSpan);
+          }
+          
+          const interestSpan = document.createElement('span');
+          interestSpan.textContent = interest;
+          interestItem.appendChild(interestSpan);
+          
+          interestsContainer.appendChild(interestItem);
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        alert('Error occurred while fetching user data.');
+      });
+  </script>
+
+  <script>
+    // This script fetches the user's profile picture and social media links and displays them on the page.
+    window.onload = async function() {
+      const user_id = localStorage.getItem('user_id');
+      const userDataPromise = fetch(`http://localhost:3000/user/${user_id}`);
+      const socialsPromise = fetch(`http://localhost:3000/user/${user_id}/socials`);
+      const [userDataResponse, socialsResponse] = await Promise.all([userDataPromise, socialsPromise]);
+
+      const userData = await userDataResponse.json();
+      const socials = await socialsResponse.json();
+
+      fetch(`http://localhost:3000/user/${user_id}`)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('profile-picture').src = data.profilepic_url || 'http://localhost:3000/images/default-profile-picture.jpg';
+        });
+
+      if (socials.github) {
+        document.getElementById('github-link').href = socials.github;
+      }
+      if (socials.linkedin) {
+        document.getElementById('linkedin-link').href = socials.linkedin;
+      }
+      if (socials.twitter) {
+        document.getElementById('twitter-link').href = socials.twitter;
+      }
+      if (socials.facebook) {
+        document.getElementById('facebook-link').href = socials.facebook;
+      }
+      if (socials.instagram) {
+        document.getElementById('instagram-link').href = socials.instagram;
+      }
+    }
+
+    // This function opens the file selection dialog when the user clicks the "Edit Profile Picture" button.
+    function editProfilePicture() {
+      document.getElementById('profile-picture-input').click();
+    }
+
+    // This function sends a POST request to the server with the selected file when the user selects a new profile picture.
+    document.getElementById('profile-picture-input').addEventListener('change', function(event) {
+      const user_id = localStorage.getItem('user_id');
+      const file = event.target.files[0];
+      const formData = new FormData();
+      formData.append('profile-picture', file);
+
+      fetch(`http://localhost:3000/user/${user_id}/edit-profile-picture`, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          alert('Error: ' + data.error);
+        } else {
+          document.getElementById('profile-picture').src = data.profilepic_url;
+        }
+      });
+    });
+
+    // These functions open and close the social media links dialog box when the user clicks the "Add Socials" button and the close button.
+    function openDialog() {
+      document.getElementById('add-socials-dialog').style.display = 'block';
+    }
+    function closeDialog() {
+      document.getElementById('add-socials-dialog').style.display = 'none';
+    }
+
+    // This function sends a POST request to the server with the social media links when the user clicks the "Save" button in the dialog box.
+    async function saveSocials(event) {
+      event.preventDefault();
+
+      const user_id = localStorage.getItem('user_id');
+      const github = document.getElementById('github').value;
+      const linkedin = document.getElementById('linkedin').value;
+      const twitter = document.getElementById('twitter').value;
+      const facebook = document.getElementById('facebook').value;
+      const instagram = document.getElementById('instagram').value;
+
+      const socials = { github, linkedin, twitter, facebook, instagram };
+
+      try {
+        const response = await fetch(`http://localhost:3000/user/${user_id}/socials`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(socials)
+        });
+
+        if (!response.ok) {
+          throw new Error('Failed to save socials.');
+        }
+
+        alert('Links saved successfully.');
+        closeDialog();
+
+        if (github) {
+          document.getElementById('github-link').href = github;
+        }
+        if (linkedin) {
+          document.getElementById('linkedin-link').href = linkedin;
+        }
+        if (twitter) {
+          document.getElementById('twitter-link').href = twitter;
+        }
+        if (facebook) {
+          document.getElementById('facebook-link').href = facebook;
+        }
+        if (instagram) {
+          document.getElementById('instagram-link').href = instagram;
+        }
+      } catch (error) {
+        console.error(error);
+        alert('Failed to save socials.');
+      }
+    }
+  </script>
+</body>
 </html>

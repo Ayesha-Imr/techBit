@@ -1,0 +1,104 @@
+/*
+Explanation:
+This CSS file styles the Login page of the TechBit web application. It defines the appearance of various elements on the page to create a visually appealing and user-friendly interface.
+
+The body selector sets the background color, font family, and other properties for the entire page. It uses flexbox to center the content vertically and horizontally.
+
+The .container class represents the container div that holds the login form. It defines the width, padding, background color, border radius, and box shadow to create a card-like layout for the form.
+
+The h2 selector styles the heading of the form, setting the text alignment and margin.
+
+The form selector styles the login form. It sets the width to 100% and adjusts the spacing between elements.
+
+The form input[type="text"] and form input[type="password"] selectors style the input fields for the username/email and password. They set the width, padding, margin, border, border radius, background color, and text color.
+
+The #forgot-password selector styles the "Forgot password?" link. It sets the display, margin, color, and text decoration.
+
+The form button selector styles the submit button. It sets the display, background color, text color, border, padding, border radius, cursor, text alignment, and width.
+
+The #signup-redirect selector styles the paragraph below the form that contains the "Don't have an account?" text and the "Sign Up" link. It sets the margin-top and text alignment.
+
+The #signup-redirect a selector styles the "Sign Up" link. It sets the color.
+
+*/
+
+body {
+    background-color: #03314B;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    background-color: rgb(2, 41, 65);
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 10px 0px #000;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+form {
+    width: 100%;
+}
+
+form input[type="text"], form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #225472;
+    color: #ffffff;
+}
+
+#forgot-password {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+#forgot-password:hover {
+    color: #c2a528;
+}
+
+form button {
+    display: block;
+    background-color: #ffffff;
+    color: #03314B;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+}
+
+form button:hover {
+    background-color: #c2a528;
+}
+
+#signup-redirect {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#signup-redirect a {
+    color: #ffffff;
+}
+
+#signup-redirect a:hover {
+    color: #c2a528;
+}

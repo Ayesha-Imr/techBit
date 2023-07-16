@@ -1,0 +1,82 @@
+<!--
+Explanation:
+This HTML file represents the registration page of the TechBit web application. It allows users to sign up by providing their name, email, username, password, gender, and country.
+
+The page includes a form that submits user data to the server for registration. It also includes a link to the login page for users who already have an account.
+
+The form submission is handled by JavaScript code that listens for the submit event and sends an XMLHttpRequest to the server with the user data. The response from the server is processed, and if the registration is successful, the user is alerted and redirected to the interest.html page. Otherwise, an error message is displayed.
+
+The script tag at the end of the file adds an event listener to the form submission and performs the necessary actions.
+
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - techBit</title>
+    <link rel="stylesheet" href="register.css">
+    <script src="populateCountries.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form id="signup-form" action="http://localhost:3000/register" method="POST">
+            <input type="text" id="name" name="name" placeholder="Name" required>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <div id="gender">
+              <label id="gender-label">Gender:</label>
+              <input type="radio" id="male" name="gender" value="male" required>
+              <label for="male">Male</label>
+              <input type="radio" id="female" name="gender" value="female" required>
+              <label for="female">Female</label>
+              <input type="radio" id="other" name="gender" value="other" required>
+              <label for="other">Prefer not to say</label>
+          </div>
+          <select id="country" name="country" required>
+              <option value="" disabled selected>Country</option>
+          </select>          
+          <button type="submit">Sign Up</button>
+          <p id="login">Already have an account? <a href="login.html">Log in</a></p>
+        </form>
+    </div>
+</body>
+<script>
+  document.getElementById('signup-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://localhost:3000/register', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState !== 4) return;
+
+      if (xhr.status >= 200 && xhr.status < 300) {
+        const response = JSON.parse(xhr.responseText);
+        const user_id = response.user_id; // Get the user_id from the response
+        alert('Sign up successful!');
+        // Store the user_id in local storage
+        localStorage.setItem('user_id', user_id);
+        // Redirect to the interest.html page
+        window.location.href = 'interest.html';
+      } else {
+        var response = JSON.parse(xhr.responseText);
+        alert('Error: ' + response.error);
+      }
+    };
+
+    var formData = new FormData(event.target);
+    var data = {};
+
+    for (var pair of formData.entries()) {
+      data[pair[0]] = pair[1];
+    }
+
+    xhr.send(JSON.stringify(data));
+  });
+</script>
+</html>

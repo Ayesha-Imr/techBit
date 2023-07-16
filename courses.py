@@ -1,3 +1,17 @@
+"""
+Explanation:
+This Python script is responsible for scraping course data from the Coursera website and storing it in a database. It uses Selenium WebDriver with Chrome to automate web browsing and BeautifulSoup for parsing the HTML content.
+
+The script establishes a connection to the Oracle database and sets up the Selenium WebDriver with Chrome. It defines the base URL for Coursera and a list of search queries related to different course categories. It also specifies the number of pages to scrape for each search query.
+
+The script then iterates over each search query and scrapes data from the specified number of pages. For each page, it loads the Coursera page, waits for it to load completely, and extracts relevant information such as course title, provider, duration, rating, number of reviews, and course image URL.
+
+The extracted information is printed to the console for inspection and then inserted into the content and courses tables of the database. The script uses SQL queries to perform the database operations, including inserting the content and course data.
+
+After scraping and storing the data for all search queries and pages, the script closes the database cursor and connection, as well as the browser.
+
+"""
+
 import time
 import cx_Oracle
 from selenium import webdriver

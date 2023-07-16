@@ -1,17 +1,29 @@
+<!-- 
+This is the main HTML file for the TechBit application. The webpage provides a platform where computer science students can find 
+a wide range of resources, such as courses, articles, coding competitions, and tools. 
+
+The layout includes a header with navigation links to the Home, Discover, Saved, and Account pages. 
+It also shows the user's interests fetched from the server, which are displayed with corresponding emojis.
+The page features a carousel showing a variety of resources, each resource having a title, a brief description, and a link for more information.
+
+In the Courses section, it makes an AJAX call to fetch courses from the server and display them in a carousel. Similarly, 
+the Articles section fetches and displays articles from the server. 
+
+The Coding Competitions section fetches and displays information about various coding competitions. 
+At the end, a footer displays some legal information and social media links.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>techBit</title>
-    <!--link to the css file-->
     <link rel="stylesheet" href="stylehomepage.css">
-    <!--link to slick carousel stylsesheet-->
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
   </head>
-
   <body>
+    <!-- Header Section with Navigation -->
     <header>
       <div class="logo">
         <img class="logo" src="logoWHite.png" alt="">
@@ -19,39 +31,71 @@
       </div>
       <nav>
         <ul>
-          <li><img class="icon" src="homeIcon.png" alt=""><a class="nav-link" href="index.html" target="_self">Home</a>
-          </li>
-          <li><img class="icon" src="searchIcon.png" alt=""><a class="nav-link" href="explore.html"
-              target="_self">Discover</a></li>
-          <li><img class="icon" src="saveIcon.png" alt=""><a class="nav-link" href="save.html" target="_self">Saved</a>
-          </li>
-          <li><img class="icon" src="accountIcon.png" alt=""><a class="nav-link" href="account.html"
-              target="_self">Account</a></li>
+          <li><img class="icon" src="homeIcon.png" alt=""><a class="nav-link" href="index.html" target="_self">Home</a></li>
+          <li><img class="icon" src="searchIcon.png" alt=""><a class="nav-link" href="explore.html" target="_self">Discover</a></li>
+          <li><img class="icon" src="saveIcon.png" alt=""><a class="nav-link" href="save.html" target="_self">Saved</a></li>
+          <li><img class="icon" src="accountIcon.png" alt=""><a class="nav-link" href="account.html" target="_self">Account</a></li>
         </ul>
       </nav>
     </header>
-    <section class="graph">
-      <h1>For You</h1>
-    </section>
+    
+    <!-- Section for Displaying User's Interests -->
     <section class="following">
-      <h1>Following</h1>
-      <div class="following">
-        <div class="interest-item">🤖Artificial Intelligence</div>
-        <div class="interest-item">🦿Machine Learning</div>
-        <div class="interest-item">💻Web Development</div>
-        <div class="interest-item">🖼️UI/UX Design</div>
-        <div class="interest-item">☁️ Cloud Computing</div>
-        <div class="interest-item">📊Data Science</div>
-        <div class="interest-item">📱Mobile App Development</div>
-        <div class="interest-item">🌐Web3.0</div>
-
-
+      <div class="interests-container">
+        <h2>Your Interests</h2>
+        <div id="interests-display" class="interests-container"></div>
       </div>
-
+      
+      <!-- Script for Fetching and Displaying User's Interests -->
+      <script>
+        const emojiMap = {
+          'Artificial Intelligence': '🤖',
+          'Machine Learning': '🦿',
+          'Web Development': '💻',
+          'UI/UX Design': '🖼️',
+          'Data Science': '📊',
+          'Cybersecurity': '🛡️',
+          'Internet Of Things (IoT)': '🦾',
+          'Game Development': '🎮',
+          'Cloud Computing': '☁️',
+          'Mobile App Development': '📱',
+          'Database Management': '🗂️',
+          'Web3.0': '🌐',
+          'Blockchain Technology': '₿',
+          'Software Testing and Quality Assurance': '⚙️',
+          'Data Mining': '🗃️',
+          'Big Data Analytics': '📈',
+          'Networking and Infrastructure': '🌐',
+          'Computer Vision and Graphics': '📹',
+          'Virtual Reality (VR) and Augmented Reality (AR)': '🥽',
+          'Human Computer Interaction (HCI)': '👨🏽‍💻',
+          'Robotics': '🤖',
+          'Embedded Systems': '🗄️',
+          'Information Systems Management': '🖥️',
+          'DevOps': '⌨️'
+        };  
+        const interestsContainer = document.getElementById('interests-display');
+    
+        // Fetch the user_id from local storage
+        const user_id = localStorage.getItem('user_id');
+    
+        fetch(`http://localhost:3001/interests/${user_id}`)
+          .then(response => response.json())
+          .then(interests => {
+            for (const interest of interests) {
+              const div = document.createElement('div');
+              div.className = 'interest-item';
+              div.innerHTML = `<span>${emojiMap[interest]}</span><span>${interest}</span>`;
+              interestsContainer.appendChild(div);
+            }
+          });
+      </script>
     </section>
+    <!-- Section for Displaying Various Resources -->
     <section class="resources">
       <h1>Resources</h1>
       <div class="carousel">
+         <!-- Each .carousel-item div represents a single resource with a link, image, and description -->
         <div class="carousel-item">
           <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
           <hr>
@@ -154,311 +198,229 @@
           <p class="desc">A widely adopted source code editor developed by Microsoft, offering a rich set of features.
           </p>
         </div>
+        <div class="carousel-item">
+          <a href="https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ"><img class="tools" src="freecodecamp.png"></a>
+          <hr>
+          <a href="https://www.youtube.com/channel/UC8butISFwT-Wl7EV0hUK0BQ" class="link">
+            <h3>freeCodeCamp</h3>
+          </a>
+          <p>YouTube Channel</p>
+          <p class="desc">A nonprofit organization that consists of an interactive learning web platforma and an online
+            community.</p>
+        </div>
+        <div class="carousel-item">
+          <a href="https://www.youtube.com/channel/UC29ju8bIPH5as8OGnQzwJyA"><img class="tools" src="codecourse.png"></a>
+          <hr>
+          <a href="https://www.youtube.com/channel/UC29ju8bIPH5as8OGnQzwJyA" class="link">
+            <h3>Codecourse</h3>
+          </a>
+          <p>YouTube Channel</p>
+          <p class="desc">A YouTube channel that provides high quality video tutorials for web developers and
+            designers.</p>
+        </div>
       </div>
     </section>
     <section class="courses">
-      <div class="heading">
-        <h1>Courses</h1>
-        <a href="courses.html"><button class="view">View All</button></a>
-      </div>
+       <!-- Section for Displaying Courses -->
+      <h1>Courses</h1>
       <div class="courses-carousel">
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
+        <!-- Here is where the fetched courses will be appended -->
+      </div>
+      <div class="view-all-button">
+        <a href="courses.html">View All</a>
       </div>
     </section>
-    <section class="articles">
-      <div class="heading">
-        <h1>Articles</h1>
-        <a href="articles.html"><button class="view">View All</button></a>
-      </div>
-      <div class="articles-carousel">
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="codingComp">
-      <div class="heading">
-        <h1>Coding Competitions</h1>
-        <a href="codingComp.html"><button class="view">View All</button></a>
-      </div>
-      <div class="comps-carousel">
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="image-c">
-            <a href="https://www.techinterviewhandbook.org/"><img class="tools" src="techguidebook.png"></a>
-            <img class="icon-bk" src="bookmarkIcon.png" alt="">
-          </div>
-          <div class="desc"><a href="https://www.techinterviewhandbook.org/" class="link">
-              <h3>Tech Guide Book</h3>
-            </a>
-            <p>Website</p>
-            <p class="desc">A guide book with free curated technical interview preparation material.</p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Including Required Scripts for Carousel and Courses Data -->
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script> 
+    <!-- Script for Fetching and Displaying Courses -->
     <script>
-      $(document).ready(function () {
-        $('.carousel').slick({
-          slidesToShow: 5,
-          slidesToScroll: 1,
-          autoplay: false,
-          autoplaySpeed: 2000,
-          prevArrow: false,
-          nextArrow: false
+        $(document).ready(function () {
+          $.get('http://localhost:3001/courses', function(data) {
+          for(let i=0; i<data.length; i++) {
+            let courseItem = `
+              <div class="carousel-item" data-content-id="${data[i].CONTENT_ID}">
+                <div class="image-c">
+                  <a href="${data[i].URL}">
+                    <img class="tools" src="${data[i].IMAGE_URL}">
+                  </a>
+                </div>
+                <div class="desc">
+                  <a href="${data[i].URL}" class="link">
+                    <h3>${data[i].COURSETITLE}</h3>
+                  </a>
+                  <p>${data[i].PROVIDER}</p>
+                  <p>Rating: ${data[i].RATING.toFixed(1)}</p>
+                  <p class="desc">Reviews: ${data[i].NUMBER_OF_REVIEWS}</p><br>
+                  <p class="desc">${data[i].DURATION}</p>
+                </div>
+              </div>
+            `;
+            $('.courses-carousel').append(courseItem);
+          }
 
+          $('.courses-carousel').slick({
+            slidesToShow: 5,
+            slidesToScroll: 2,
+            draggable: true,
+            swipe: true,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            prevArrow: false,
+            nextArrow: false
+          });
+          $('.courses-carousel').on('click', '.icon-bk', function() {
+            const itemId = $(this).closest('.carousel-item').data('content-id');
+            const userId = localStorage.getItem('user_id');
+
+            $.post('http://localhost:3004/save', { user_id: userId, content_id: itemId }, function(response) {
+              alert('Item saved!');
+            });
+          });
         });
-        $('.courses-carousel').slick({
-          slidesToShow: 5,
-          slidesToScroll: 1,
-          draggable: true,
-          swipe: true,
-          autoplay: false,
-          prevArrow: false,
-          nextArrow: false
-        });
-        $('.articles-carousel').slick({
-          slidesToShow: 5,
-          slidesToScroll: 1,
-          draggable: true,
-          swipe: true,
-          autoplay: false,
-          prevArrow: false,
-          nextArrow: false
-        });
-        $('.comps-carousel').slick({
-          slidesToShow: 5,
-          slidesToScroll: 1,
-          draggable: true,
-          swipe: true,
-          autoplay: false,
-          prevArrow: false,
-          nextArrow: false
-        });
-      })
+      });
+
     </script>
+     <!-- Section for Displaying Articles -->     
+    <section class="articles">
+      <h1>Articles</h1>
+      <div class="articles-carousel"> 
+        <!-- Newly created div for the articles carousel -->
+      </div>
+      <div class="view-all-button">
+        <a href="articles.html">View All</a>
+      </div>
+    </section>
+    <!-- Script for Fetching and Displaying Articles -->
+    <script>
+        $(document).ready(function () {
+          $.get('http://localhost:3001/articles', function(data) {
+            for(let i=0; i<data.length; i++) {
+            let articleItem = `
+                <div class="carousel-item">
+                <div class="image-c">
+                    <a href="${data[i].URL}">
+                    <img class="tools" src="${data[i].IMAGE_URL}">
+                    </a>
+                </div>
+                <div class="desc">
+                    <a href="${data[i].URL}" class="link">
+                    <h3>${data[i].TITLE}</h3>
+                    </a>
+                    <p>${data[i].AUTHOR}</p>
+                    <p class="desc">${limitDescription(data[i].DESCRIPTION)}</p>
+                </div>
+                </div>
+                `;
+            $('.articles-carousel').append(articleItem);
+            }
+
+            $('.articles-carousel').slick({
+            slidesToShow: 5,
+            slidesToScroll: 2,
+            draggable: true,
+            swipe: true,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            prevArrow: false,
+            nextArrow: false
+            });
+        });
+        });
+    /*-- Function for limiting the description of the articles --*/
+    function limitDescription(description) {
+      const words = description.split(' ');
+      if (words.length > 10) {
+        return words.slice(0, 10).join(' ') + '...';
+      } else {
+        return description;
+      }
+    }
+  </script>
+   <!-- Section for Displaying Coding Competitions -->
+    <section class="coding-comps">
+      <h1>Coding Competitions</h1>
+      <div class="comps-carousel">
+      </div>
+      <div class="view-all-button">
+        <a href="codingComp.html">View All</a>
+      </div>
+       <!-- Script for Fetching and Displaying Coding Competitions -->
+      <script>
+        $(document).ready(function () {
+        $.get('http://localhost:3001/codingcomps', function(data) {
+            for(let i=0; i<data.length; i++) {
+            let compItem = `
+                <div class="carousel-item">
+                <div class="image-c">
+                    <a href="${data[i].URL}">
+                    <img class="tools" src="${data[i].IMAGE_URL}">
+                    </a>
+                </div>
+                <div class="desc">
+                    <a href="${data[i].URL}" class="link">
+                    <h3>${data[i].NAME}</h3>
+                    </a>
+                    <p>${data[i].SITE}</p>
+                    <p class="desc">Duration: ${Math.round(data[i].DURATION / 3600)} Hours</p>
+                </div>
+                </div>
+                `;
+            $('.comps-carousel').append(compItem);
+            }
+
+            $('.comps-carousel').slick({
+            slidesToShow: 5,
+            slidesToScroll: 2,
+            draggable: true,
+            swipe: true,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            prevArrow: false,
+            nextArrow: false
+            });
+        });
+        });
+      </script>      
+    </section>
+    <!-- Script for Initializing the Carousel -->
+    <script>
+        $(document).ready(function () {
+          $('.carousel').slick({
+            slidesToShow: 5,
+            slidesToScroll: 2,
+            draggable: true,
+            swipe: true,
+            autoplay: true,
+            autoplaySpeed: 3000,
+            prevArrow: false,
+            nextArrow: false
+          });
+        });
+      </script>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="logo">
+        <img class="logo" src="logoWHite.png" alt="">
+        <h1>techBit</h1>
+      </div>
+      <ul>
+        <li> © techBit 2023 |</li>
+        <li>Sitemap |</li>
+        <li>Legal Notice |</li>
+        <li>Terms of Service |</li>
+        <li>Privacy Policies</li>
+      </ul>
+      <ul>
+        <li><img class="icons" src="icons8-facebook-24.png" alt=""></li>
+        <li><img class="icons" src="icons8-twitter-circled-30.png" alt=""></li>
+        <li><img class="icons" src="icons8-linkedin-64.png" alt=""></li>
+        <li></li>
+      </ul>
+    </footer>
   </body>
-  <footer>
-    <div class="logo">
-      <img class="logo" src="logoWHite.png" alt="">
-      <h1>techBit</h1>
-    </div>
-    <ul>
-      <li> © techBit 2023 |</li>
-      <li>Sitemap |</li>
-      <li>Legal Notice |</li>
-      <li>Terms of Service |</li>
-      <li>Privacy Policies</li>
-    </ul>
-    <ul>
-      <li><img class="icons" src="icons8-facebook-24.png" alt=""></li>
-      <li><img class="icons" src="icons8-twitter-circled-30.png" alt=""></li>
-      <li><img class="icons" src="icons8-linkedin-64.png" alt=""></li>
-      <li></li>
-    </ul>
-  </footer>
 
 
 </html>

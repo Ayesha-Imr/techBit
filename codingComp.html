@@ -1,222 +1,122 @@
+<!--
+Explanation:
+This HTML file represents the Coding Competitions page of the TechBit website. It displays a list of coding competitions to the users. The page includes a header with a navigation menu, a container to display the competitions, and pagination buttons to navigate between pages. The JavaScript code fetches the competitions from the server, populates the competitions container, and provides functionality to save competitions as bookmarks.
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>techBit</title>
-    <link rel="stylesheet" href="stylehomepage.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>techBit</title>
+  <link rel="stylesheet" href="stylehomepage.css">
+</head>
 
-  <body>
-    <header>
-      <div class="logo">
-        <img class="logo" src="logoWHite.png" alt="">
-        <h1>techBit</h1>
-      </div>
-      <nav>
-        <ul>
-          <li><img class="icon" src="homeIcon.png" alt=""><a class="nav-link" href="index.html" target="_self">Home</a>
-          </li>
-          <li><img class="icon" src="searchIcon.png" alt=""><a class="nav-link" href="explore.html"
-              target="_self">Discover</a></li>
-          <li><img class="icon" src="saveIcon.png" alt=""><a class="nav-link" href="save.html" target="_self">Saved</a>
-          </li>
-          <li><img class="icon" src="accountIcon.png" alt=""><a class="nav-link" href="account.html"
-              target="_self">Account</a></li>
-        </ul>
-      </nav>
-    </header>
-    <section class="container">
-      <a href="index.html">
-        < Back to Home </a>
-          <h1>All Competitions</h1>
-          <div class="parent-courses">
-            <div class="child-courses">
-              <div class="image-c">
-                <a href="https://www.techinterviewhandbook.org/"><img class="Allpage" src="techguidebook.png"></a>
-                <img class="bookmark" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-c"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-courses">
-              <div class="image-c">
-                <a href="https://www.techinterviewhandbook.org/"><img class="Allpage" src="techguidebook.png"></a>
-                <img class="bookmark" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-c"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-courses">
-              <div class="image-c">
-                <a href="https://www.techinterviewhandbook.org/"><img class="Allpage" src="techguidebook.png"></a>
-                <img class="bookmark" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-c"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-courses">
-              <div class="image-c">
-                <a href="https://www.techinterviewhandbook.org/"><img class="Allpage" src="techguidebook.png"></a>
-                <img class="bookmark" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-c"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-courses">
-              <div class="image-c">
-                <a href="https://www.techinterviewhandbook.org/"><img class="Allpage" src="techguidebook.png"></a>
-                <img class="bookmark" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-c"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-courses">
-              <div class="image-c">
-                <a href="https://www.techinterviewhandbook.org/"><img class="Allpage" src="techguidebook.png"></a>
-                <img class="bookmark" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-c"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-courses">
-              <div class="image-c">
-                <a href="https://www.techinterviewhandbook.org/"><img class="Allpage" src="techguidebook.png"></a>
-                <img class="bookmark" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-c"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-courses">
-              <div class="image-c">
-                <a href="https://www.techinterviewhandbook.org/"><img class="Allpage" src="techguidebook.png"></a>
-                <img class="bookmark" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-c"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-courses">
-              <div class="image-c">
-                <a href="https://www.techinterviewhandbook.org/"><img class="Allpage" src="techguidebook.png"></a>
-                <img class="bookmark" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-c"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-courses">
-              <div class="image-c">
-                <a href="https://www.techinterviewhandbook.org/"><img class="Allpage" src="techguidebook.png"></a>
-                <img class="bookmark" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-c"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-courses">
-              <div class="image-c">
-                <a href="https://www.techinterviewhandbook.org/"><img class="Allpage" src="techguidebook.png"></a>
-                <img class="bookmark" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-c"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-courses">
-              <div class="image-c">
-                <a href="https://www.techinterviewhandbook.org/"><img class="Allpage" src="techguidebook.png"></a>
-                <img class="bookmark" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-c"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-courses">
-              <div class="image-c">
-                <a href="https://www.techinterviewhandbook.org/"><img class="Allpage" src="techguidebook.png"></a>
-                <img class="bookmark" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-c"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-courses">
-              <div class="image-c">
-                <a href="https://www.techinterviewhandbook.org/"><img class="Allpage" src="techguidebook.png"></a>
-                <img class="bookmark" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-c"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-courses">
-              <div class="image-c">
-                <a href="https://www.techinterviewhandbook.org/"><img class="Allpage" src="techguidebook.png"></a>
-                <img class="bookmark" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-c"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
+<body>
+  <header>
+    <div class="logo">
+      <img class="logo" src="logoWHite.png" alt="">
+      <h1>techBit</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><img class="icon" src="homeIcon.png" alt=""><a class="nav-link" href="index.html" target="_self">Home</a>
+        </li>
+        <li><img class="icon" src="searchIcon.png" alt=""><a class="nav-link" href="explore.html"
+            target="_self">Discover</a></li>
+        <li><img class="icon" src="saveIcon.png" alt=""><a class="nav-link" href="save.html" target="_self">Saved</a>
+        </li>
+        <li><img class="icon" src="accountIcon.png" alt=""><a class="nav-link" href="account.html"
+            target="_self">Account</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="container">
+    <a href="index.html">Back to Home</a>
+    <h1>All Competitions</h1>
+    <div id="courses-container" class="parent-courses">
+      <!-- Competitions will be inserted here -->
+    </div>
+    <div class="button-container">
+      <button id="prev-page">Previous Page</button>
+      <button id="next-page">Next Page</button>
+    </div>
+  </section>
+  <script>
+    const compsContainer = document.getElementById('courses-container');
+    const prevPageButton = document.getElementById('prev-page');
+    const nextPageButton = document.getElementById('next-page');
 
-          </div>
+    let currentPage = 1;
 
-          </div>
-    </section>
-  </body>
+    // Function to load competitions for a given page
+    function loadPage(page) {
+      fetch(`http://localhost:3003/codingcomps/${page}`)
+        .then(response => response.json())
+        .then(comps => {
+          compsContainer.innerHTML = '';
+          for (const comp of comps) {
+            const div = document.createElement('div');
+            div.className = 'child-courses';
+            div.dataset.contentId = comp.CONTENT_ID; // New line
+            div.innerHTML = `
+              <div class="image-c">
+                <a href="${comp.URL}" target="_blank"><img class="Allpage" src="${comp.IMAGE_URL}"></a>
+                <img class="bookmark" src="bookmarkIcon.png" alt="">
+              </div>
+              <div class="text-c">
+                <a href="${comp.URL}" target="_blank" class="link">
+                  <h3>${comp.NAME}</h3>
+                </a>
+                <p>${comp.SITE}</p>
+                <p class="desc">Duration: ${comp.DURATION} hours</p>
+              </div>
+            `;
+            compsContainer.appendChild(div);
+          }
+        });
+    }
+
+    // Event listener for the previous page button
+    prevPageButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        loadPage(currentPage);
+      }
+    });
+
+    // Event listener for the next page button
+    nextPageButton.addEventListener('click', () => {
+      currentPage++;
+      loadPage(currentPage);
+    });
+
+    // Event listener for saving a competition as a bookmark
+    compsContainer.addEventListener('click', event => {
+      if (!event.target.matches('.bookmark')) {
+        return;
+      }
+
+      const itemId = event.target.closest('.child-courses').dataset.contentId;
+      const userId = localStorage.getItem('user_id');
+
+      console.log(`Saving item with ID ${itemId} for user ${userId}`);
+
+      fetch('http://localhost:3004/saveditems', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ user_id: userId, content_id: itemId })
+      }).then(() => {
+        alert('Item saved!');
+      });
+    });
+
+    // Initial page load
+    loadPage(currentPage);
+  </script>
+</body>
 
 </html>

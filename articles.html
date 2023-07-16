@@ -1,150 +1,132 @@
+<!-- Explanation: This HTML file represents the Articles page of the TechBit website. It displays a list of articles to the users. The page includes a header with a navigation menu, a container to display the articles, and pagination buttons to navigate between pages. The JavaScript code fetches the articles from the server, populates the articles container, and provides functionality to save articles as bookmarks. -->
+
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>techBit</title>
-    <link rel="stylesheet" href="stylehomepage.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>techBit</title>
+  <link rel="stylesheet" href="stylehomepage.css">
+</head>
 
-  <body>
-    <header>
-      <div class="logo">
-        <img class="logo" src="logoWHite.png" alt="">
-        <h1>techBit</h1>
-      </div>
-      <nav>
-        <ul>
-          <li><img class="icon" src="homeIcon.png" alt=""><a class="nav-link" href="index.html" target="_self">Home</a>
-          </li>
-          <li><img class="icon" src="searchIcon.png" alt=""><a class="nav-link" href="explore.html"
-              target="_self">Discover</a></li>
-          <li><img class="icon" src="saveIcon.png" alt=""><a class="nav-link" href="save.html" target="_self">Saved</a>
-          </li>
-          <li><img class="icon" src="accountIcon.png" alt=""><a class="nav-link" href="account.html"
-              target="_self">Account</a></li>
-        </ul>
-      </nav>
-    </header>
-    <section class="container">
-      <a href="index.html">
-        < Back to Home </a>
-          <h1>All Articles</h1>
-          <div class="parent-articles">
-            <div class="child-articles">
-              <div class="image-a">
-                <a href="https://www.techinterviewhandbook.org/"><img class="art-page" src="techguidebook.png"></a>
-                <img class="bookmark-a" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-a"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-articles">
-              <div class="image-a">
-                <a href="https://www.techinterviewhandbook.org/"><img class="art-page" src="techguidebook.png"></a>
-                <img class="bookmark-a" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-a"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
+<body>
+  <header>
+    <div class="logo">
+      <img class="logo" src="logoWHite.png" alt="">
+      <h1>techBit</h1>
+    </div>
+    <nav>
+      <ul>
+        <li><img class="icon" src="homeIcon.png" alt=""><a class="nav-link" href="index.html" target="_self">Home</a>
+        </li>
+        <li><img class="icon" src="searchIcon.png" alt=""><a class="nav-link" href="explore.html"
+            target="_self">Discover</a></li>
+        <li><img class="icon" src="saveIcon.png" alt=""><a class="nav-link" href="save.html" target="_self">Saved</a>
+        </li>
+        <li><img class="icon" src="accountIcon.png" alt=""><a class="nav-link" href="account.html"
+            target="_self">Account</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="container">
+    <a href="index.html">Back to Home</a>
+    <h1>All Articles</h1>
+    <div id="articles-container" class="parent-articles">
+      <!-- Articles will be inserted here -->
+    </div>
+    <div class="button-container">
+      <button id="prev-page">Previous Page</button>
+      <button id="next-page">Next Page</button>
+    </div>
+  </section>
+  <script>
+    const articlesContainer = document.getElementById('articles-container');
+    const prevPageButton = document.getElementById('prev-page');
+    const nextPageButton = document.getElementById('next-page');
 
-            </div>
-            <div class="child-articles">
-              <div class="image-a">
-                <a href="https://www.techinterviewhandbook.org/"><img class="art-page" src="techguidebook.png"></a>
-                <img class="bookmark-a" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-a"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
+    let currentPage = 1;
 
+    // Function to load articles for a given page
+    function loadPage(page) {
+      fetch(`http://localhost:3003/articles/${page}`)
+        .then(response => response.json())
+        .then(articles => {
+          articlesContainer.innerHTML = '';
+          for (const article of articles) {
+            const div = document.createElement('div');
+            div.className = 'child-articles';
+            div.dataset.contentId = article.CONTENT_ID; // New line
+            div.innerHTML = `
+              <div class="image-a">
+                <a href="${article.URL}"><img class="art-page" src="${article.IMAGE_URL}"></a>
+                <img class="bookmark-a" src="bookmarkIcon.png" alt="">
+              </div>
+              <div class="text-a">
+                <a href="${article.URL}" class="link">
+                  <h3>${article.TITLE}</h3>
+                </a>
+                <p>${article.AUTHOR}</p>
+                <p class="desc">${truncateDescription(article.DESCRIPTION)}</p>
+              </div>
+            `;
+            articlesContainer.appendChild(div);
+          }
+        });
+    }
 
-            </div>
-            <div class="child-articles">
-              <div class="image-a">
-                <a href="https://www.techinterviewhandbook.org/"><img class="art-page" src="techguidebook.png"></a>
-                <img class="bookmark-a" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-a"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-articles">
-              <div class="image-a">
-                <a href="https://www.techinterviewhandbook.org/"><img class="art-page" src="techguidebook.png"></a>
-                <img class="bookmark-a" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-a"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-articles">
-              <div class="image-a">
-                <a href="https://www.techinterviewhandbook.org/"><img class="art-page" src="techguidebook.png"></a>
-                <img class="bookmark-a" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-a"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-articles">
-              <div class="image-a">
-                <a href="https://www.techinterviewhandbook.org/"><img class="art-page" src="techguidebook.png"></a>
-                <img class="bookmark-a" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-a"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-articles">
-              <div class="image-a">
-                <a href="https://www.techinterviewhandbook.org/"><img class="art-page" src="techguidebook.png"></a>
-                <img class="bookmark-a" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-a"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-            <div class="child-articles">
-              <div class="image-a">
-                <a href="https://www.techinterviewhandbook.org/"><img class="art-page" src="techguidebook.png"></a>
-                <img class="bookmark-a" src="bookmarkIcon.png" alt="">
-              </div>
-              <div class="text-a"><a href="https://www.techinterviewhandbook.org/" class="link">
-                  <h3>Tech Guide Book</h3>
-                </a>
-                <p>Website</p>
-                <p class="desc">A guide book with free curated technical interview preparation material.</p>
-              </div>
-            </div>
-          </div>
-    </section>
-  </body>
+    // Function to truncate article description if it exceeds 20 words
+    function truncateDescription(description) {
+      const words = description.split(' ');
+      if (words.length > 20) {
+        return words.slice(0, 20).join(' ') + '...';
+      } else {
+        return description;
+      }
+    }
+
+    // Event listener for the previous page button
+    prevPageButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+        currentPage--;
+        loadPage(currentPage);
+      }
+    });
+
+    // Event listener for the next page button
+    nextPageButton.addEventListener('click', () => {
+      currentPage++;
+      loadPage(currentPage);
+    });
+
+    // Initial page load
+    loadPage(currentPage);
+
+    // New code below:
+
+    // Event listener for saving an article as a bookmark
+    articlesContainer.addEventListener('click', event => {
+      if (!event.target.matches('.bookmark-a')) {
+        return;
+      }
+
+      const itemId = event.target.closest('.child-articles').dataset.contentId;
+      const userId = localStorage.getItem('user_id');
+
+      console.log(`Saving item with ID ${itemId} for user ${userId}`);
+
+      fetch('http://localhost:3004/saveditems', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ user_id: userId, content_id: itemId })
+      }).then(() => {
+        alert('Item saved!');
+      });
+    });
+  </script>
+
+</body>
 
 </html>

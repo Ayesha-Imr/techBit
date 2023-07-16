@@ -1,54 +1,64 @@
+<!--
+Explanation:
+This HTML file represents the Interests page of the TechBit web application. It allows users to select their interests from a list of options. The selected interests are then saved by sending a POST request to the backend API.
+
+The file starts with the HTML doctype declaration and the opening html tag. It contains the head and body sections.
+
+In the head section, metadata such as the character set and viewport are defined. The CSS stylesheet is linked using the link tag.
+
+The body section represents the content of the Interests page. It consists of a section element containing a container for the interests. The container displays a list of interest items, each with an icon and text. Users can click on an item to select or deselect it.
+
+The submit button triggers the submitInterests() function when clicked. This function retrieves the selected interests, creates a data object, and sends a POST request to the backend API to save the interests. The user ID is retrieved from the local storage and included in the request.
+
+The script section at the end contains the JavaScript code for toggling interests and submitting the selected interests to the backend.
+
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--link to the css file -->
-    <link rel="stylesheet" href="styleinterest.css">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styleinterest.css">
+  <title>techBit: Select your Interests</title>
+</head>
 
-
-    <title>techBit: Select your Interests</title>
-  </head>
-
-  <body>
-    <section>
-      <div class="interests-container">
-        <h2>What are you interested in?</h2>
-        <div id="interests-container" class="interests-container">
-          <div class="interest-item" onclick="toggleInterest(this)">🤖Artificial Intelligence</div>
-          <div class="interest-item" onclick="toggleInterest(this)">🦿Machine Learning</div>
-          <div class="interest-item" onclick="toggleInterest(this)">💻Web Development</div>
-          <div class="interest-item" onclick="toggleInterest(this)">🖼️UI/UX Design</div>
-          <div class="interest-item" onclick="toggleInterest(this)">📊Data Science</div>
-          <div class="interest-item" onclick="toggleInterest(this)">🛡️Cybersecurity</div>
-          <div class="interest-item" onclick="toggleInterest(this)">🦾Internet Of Things (IoT)</div>
-          <div class="interest-item" onclick="toggleInterest(this)">🎮Game Development</div>
-          <div class="interest-item" onclick="toggleInterest(this)">☁️ Cloud Computing</div>
-          <div class="interest-item" onclick="toggleInterest(this)">📱Mobile App Development</div>
-          <div class="interest-item" onclick="toggleInterest(this)">🗂️Database Management</div>
-          <div class="interest-item" onclick="toggleInterest(this)">🌐Web3.0</div>
-          <div class="interest-item" onclick="toggleInterest(this)">₿Blockchain Technology</div>
-          <div class="interest-item" onclick="toggleInterest(this)">⚙️Software Testing and Quality Assurance</div>
-          <div class="interest-item" onclick="toggleInterest(this)">🗃️Data Mining</div>
-          <div class="interest-item" onclick="toggleInterest(this)">📈Big Data Analytics</div>
-          <div class="interest-item" onclick="toggleInterest(this)">🌐Networking and Infrastructure</div>
-          <div class="interest-item" onclick="toggleInterest(this)">📹Computer Vision and Graphics</div>
-          <div class="interest-item" onclick="toggleInterest(this)">🥽Virtual Reality (VR) and Augmented Reality (AR)
-          </div>
-          <div class="interest-item" onclick="toggleInterest(this)">👨🏽‍💻Human Computer Interaction (HCI)</div>
-          <div class="interest-item" onclick="toggleInterest(this)">🤖Robotics</div>
-          <div class="interest-item" onclick="toggleInterest(this)">🗄️Embedded Systems</div>
-          <div class="interest-item" onclick="toggleInterest(this)">🖥️Information Systems Management</div>
-          <div class="interest-item" onclick="toggleInterest(this)">⌨️DevOps</div>
-
-
-        </div>
-        <button class="interest" onclick="submitInterests()">Submit</button>
+<body>
+  <section>
+      <div id="interests-container" class="interests-container">
+      <h2>What are you interested in?</h2>
+      <div id="interests-container" class="interests-container">
+        <div class="interest-item" onclick="toggleInterest(this)"><span>🤖</span><span>Artificial Intelligence</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>🦿</span><span>Machine Learning</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>💻</span><span>Web Development</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>🖼️</span><span>UI/UX Design</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>📊</span><span>Data Science</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>🛡️</span><span>Cybersecurity</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>🦾</span><span>Internet Of Things (IoT)</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>🎮</span><span>Game Development</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>☁️</span><span>Cloud Computing</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>📱</span><span>Mobile App Development</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>🗂️</span><span>Database Management</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>🌐</span><span>Web3.0</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>₿</span><span>Blockchain Technology</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>⚙️</span><span>Software Testing and Quality Assurance</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>🗃️</span><span>Data Mining</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>📈</span><span>Big Data Analytics</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>🌐</span><span>Networking and Infrastructure</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>📹</span><span>Computer Vision and Graphics</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>🥽</span><span>Virtual Reality (VR) and Augmented Reality (AR)</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>👨🏽‍💻</span><span>Human Computer Interaction (HCI)</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>🤖</span><span>Robotics</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>🗄️</span><span>Embedded Systems</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>🖥️</span><span>Information Systems Management</span></div>
+        <div class="interest-item" onclick="toggleInterest(this)"><span>⌨️</span><span>DevOps</span></div>
       </div>
-    </section>
-  </body>
+      <button class="interest" onclick="submitInterests()">Submit</button>
+    </div>
+  </section>
+</body>
 
 </html>
 <script>
@@ -57,8 +67,35 @@
   }
 
   function submitInterests() {
-    const selectedInterests = Array.from(document.getElementsByClassName('interest-item selected')).map(item => item.textContent);
+    // Retrieves the selected interests from the DOM
+    const selectedInterests = Array.from(document.getElementsByClassName('interest-item selected')).map(item => item.getElementsByTagName('span')[1].textContent.trim());
 
-    // Do something with the selected interests
-    console.log(selectedInterests);
-  }</script>
+    // Create a data object to send to the backend
+    const data = {
+      interests: selectedInterests
+    };
+
+    // Get the user_id from the hidden input field
+    const user_id = localStorage.getItem('user_id');
+    data.user_id = user_id;
+
+    // Send a POST request to the backend API to save the interests
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'http://localhost:3000/save-interests', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState !== 4) return;
+
+      if (xhr.status >= 200 && xhr.status < 300) {
+        alert('Interests saved successfully!');
+        window.location.href = 'account.html'; // Redirect to the account page after saving interests
+      } else {
+        var response = JSON.parse(xhr.responseText);
+        alert('Error: ' + response.error);
+      }
+    };
+
+    xhr.send(JSON.stringify(data));
+  }
+</script>

@@ -1,0 +1,75 @@
+<!--
+Explanation:
+This HTML file represents the Login page of the TechBit web application. It provides a form for users to enter their login credentials (username/email and password) to authenticate and access their account.
+
+The file starts with the HTML doctype declaration and the opening html tag. It contains the head and body sections.
+
+In the head section, metadata such as the character set and viewport are defined. The CSS stylesheet is linked using the link tag.
+
+The body section represents the content of the Login page. It consists of a container div that holds the login form. The form contains input fields for username/email and password, along with a "Forgot password?" link and a submit button.
+
+The script section at the end contains the JavaScript code for handling the form submission. It uses an XMLHttpRequest object to send a POST request to the backend API for user authentication. If the login is successful, the user_id is retrieved from the response, stored in the local storage, and the user is redirected to the account.html page. Otherwise, an error message is displayed.
+
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - techBit</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <input type="text" id="username-email" name="username_email" placeholder="Username or Email" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <a href="forgotpassword.html" id="forgot-password">Forgot password?</a>
+            <button type="submit">Sign In</button>
+        </form>
+        <p id="signup-redirect">Don't have an account? <a href="register.html">Sign Up</a></p>
+    </div>
+    <script>
+      // Handle form submission
+      document.getElementById('login-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Create XMLHttpRequest object
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', 'http://localhost:3000/login', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        // Handle response
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState !== 4) return;
+
+          if (xhr.status >= 200 && xhr.status < 300) {
+            const response = JSON.parse(xhr.responseText);
+            const user_id = response.user_id; // Get the user_id from the response
+            alert('Login successful!');
+            // Store the user_id in local storage
+            localStorage.setItem('user_id', user_id);
+            // Redirect to the account.html page
+            window.location.href = 'account.html';
+          } else {
+            var response = JSON.parse(xhr.responseText);
+            alert('Error: ' + response.error);
+          }
+        };
+
+        // Prepare data for request
+        var formData = new FormData(event.target);
+        var data = {};
+
+        for (var pair of formData.entries()) {
+          data[pair[0]] = pair[1];
+        }
+
+        // Send the request
+        xhr.send(JSON.stringify(data));
+      });
+    </script>
+</body>
+</html>

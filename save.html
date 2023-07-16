@@ -1,55 +1,96 @@
+<!--
+Explanation:
+This HTML file represents the "Saved" page of the TechBit web application.
+
+The page provides a container where the saved articles, resources, or competitions of the user will appear. It includes a header with the TechBit logo and navigation links for the Home, Discover, Saved, and Account pages. The main section contains a title "My Library" and a paragraph explaining that saved items will be displayed in this section.
+
+The saved items are dynamically fetched from the server using JavaScript. When the page loads, it retrieves the user ID from the browser's local storage and sends a request to the server to fetch the saved items associated with that user ID. The received items are then dynamically inserted into the "saved-items-container" div using the specified HTML structure.
+
+The footer includes the TechBit logo, a list of links related to legal notices and policies, and social media icons.
+
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>techBit</title>
-    <link rel="stylesheet" href="stylehomepage.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>techBit</title>
+  <link rel="stylesheet" href="stylehomepage.css">
+</head>
 
-  <body>
-    <header>
-      <div class="logo">
-        <img class="logo" src="logoWHite.png" alt="">
-        <h1>techBit</h1>
-      </div>
-      <nav>
-        <ul>
-          <li><img class="icon" src="homeIcon.png" alt=""><a class="nav-link" href="index.html" target="_self">Home</a>
-          </li>
-          <li><img class="icon" src="searchIcon.png" alt=""><a class="nav-link" href="explore.html"
-              target="_self">Discover</a></li>
-          <li><img class="icon" src="saveIcon.png" alt=""><a class="nav-link" href="save.html" target="_self">Saved</a>
-          </li>
-          <li><img class="icon" src="accountIcon.png" alt=""><a class="nav-link" href="account.html"
-              target="_self">Account</a></li>
-        </ul>
-      </nav>
-    </header>
-    <section class="saved">
-      <h1>My Library</h1>
-      <p>Articles, Resources or Courses you have saved will appear here</p>
-    </section>
-  </body>
-  <footer>
+<body>
+  <header>
     <div class="logo">
       <img class="logo" src="logoWHite.png" alt="">
       <h1>techBit</h1>
     </div>
-    <ul>
-      <li> © techBit 2023 |</li>
-      <li>Sitemap |</li>
-      <li>Legal Notice |</li>
-      <li>Terms of Service |</li>
-      <li>Privacy Policies</li>
-    </ul>
-    <ul>
-      <li><img class="icons" src="icons8-facebook-24.png" alt=""></li>
-      <li><img class="icons" src="icons8-twitter-circled-30.png" alt=""></li>
-      <li><img class="icons" src="icons8-linkedin-64.png" alt=""></li>
-      <li></li>
-    </ul>
-  </footer>
+    <nav>
+      <ul>
+        <li><img class="icon" src="homeIcon.png" alt=""><a class="nav-link" href="index.html" target="_self">Home</a></li>
+        <li><img class="icon" src="searchIcon.png" alt=""><a class="nav-link" href="explore.html" target="_self">Discover</a></li>
+        <li><img class="icon" src="saveIcon.png" alt=""><a class="nav-link" href="save.html" target="_self">Saved</a></li>
+        <li><img class="icon" src="accountIcon.png" alt=""><a class="nav-link" href="account.html" target="_self">Account</a></li>
+      </ul>
+    </nav>
+  </header>
+  <section class="container">
+    <h1>My Library</h1>
+    <p>Articles, Resources or Competitions you have saved will appear here</p>
+    <div id="saved-items-container" class="parent-courses">
+      <!-- Saved items will be inserted here -->
+    </div>
+  </section>
+  <script>
+    window.onload = function() {
+      const userId = localStorage.getItem('user_id');
+      console.log(userId);
+
+      fetch('http://localhost:3004/saveditems?user_id=' + userId)
+        .then(response => response.json())
+        .then(items => {
+          const savedItemsContainer = document.getElementById('saved-items-container');
+          for (const item of items) {
+            const div = document.createElement('div');
+            div.className = 'child-courses'; // use the same class as the courses page
+            div.innerHTML = `
+              <div class="image-c">
+                <a href="${item.URL}"><img class="Allpage" src="${item.IMAGE_URL}"></a>
+              </div>
+              <div class="text-c">
+                <a href="${item.URL}" class="link">
+                  <h3>${item.TITLE}</h3>
+                </a>
+                <p>${item.AUTHOR_OR_PROVIDER}</p>
+                <p>${item.CATEGORY}</p>
+              </div>
+            `;
+            savedItemsContainer.appendChild(div);
+          }
+        });
+    };
+  </script>
+
+</body>
+<footer>
+  <div class="logo">
+    <img class="logo" src="logoWHite.png" alt="">
+    <h1>techBit</h1>
+  </div>
+  <ul>
+    <li> © techBit 2023 |</li>
+    <li>Sitemap |</li>
+    <li>Legal Notice |</li>
+    <li>Terms of Service |</li>
+    <li>Privacy Policies</li>
+  </ul>
+  <ul>
+    <li><img class="icons" src="icons8-facebook-24.png" alt=""></li>
+    <li><img class="icons" src="icons8-twitter-circled-30.png" alt=""></li>
+    <li><img class="icons" src="icons8-linkedin-64.png" alt=""></li>
+    <li></li>
+  </ul>
+</footer>
 
 </html>

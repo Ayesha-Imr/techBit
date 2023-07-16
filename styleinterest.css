@@ -1,14 +1,35 @@
-/* interest.html*/
+/*
+Explanation:
+This CSS file provides styling for the interest selection page (interest.html) of the TechBit web application.
+
+The code sets styles for the body, headings, and various elements of the interest selection page.
+
+The body background color is set to a dark blue color, and the text color is set to white. The font family used is 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif.
+
+The interests-container class defines the styling for the container that holds the interest items. It sets the maximum width to 800px, centers the container on the page, and provides padding.
+
+The interest-item class defines the styling for each individual interest item. It sets the display to inline-block, adds margin and padding, applies a border, and sets the cursor to pointer. Each interest item can be clicked to select it.
+
+The interest-item.selected class defines the styling for the selected interest item. It changes the background color to light blue and the text color to black.
+
+The button.interest class defines the styling for the button used to submit the selected interests. It sets the margin, padding, width, background color, border, text color, and border-radius.
+
+The button.interest:hover class defines the styling for the button when hovered over by the mouse. It changes the text color, background color, border, and applies a scaling transformation.
+
+*/
+
 body {
   margin: 0px;
   background-color: rgb(2, 41, 65);
   color: #ffffff;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-h2{
-  margin-top: 150px;
+
+h2 {
+  margin-top: 80px;
   text-align: center;
 }
+
 .interests-container {
   max-width: 800px;
   margin: 20px auto;
@@ -29,7 +50,8 @@ h2{
   background-color: #A3CEF1;
   color: black;
 }
-button.interest{
+
+button.interest {
   margin: auto;
   padding: 8px 7px;
   width: 120px;
@@ -40,7 +62,8 @@ button.interest{
   border-radius: 15px;
   margin-left: 300px;
 }
-button.interest:hover{
+
+button.interest:hover {
   color: white;
   background-color: #dfc637;
   border: 1px solid #dfc637;
